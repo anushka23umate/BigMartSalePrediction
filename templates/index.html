@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Big Mart Sales Prediction using ML</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Big Mart Sales Prediction using ML</h1>
+        <form method="POST">
+            <label for="Item_MRP">Item MRP:</label>
+            <input type="number" step="0.01" id="Item_MRP" name="Item_MRP" required>
+
+            <label for="Outlet_Identifier">Outlet Identifier:</label>
+            <select id="Outlet_Identifier" name="Outlet_Identifier" required>
+                <option value="OUT010">OUT010</option>
+                <option value="OUT013">OUT013</option>
+                <option value="OUT017">OUT017</option>
+                <option value="OUT018">OUT018</option>
+                <option value="OUT019">OUT019</option>
+                <option value="OUT027">OUT027</option>
+                <option value="OUT035">OUT035</option>
+                <option value="OUT045">OUT045</option>
+                <option value="OUT046">OUT046</option>
+                <option value="OUT049">OUT049</option>
+            </select>
+
+            <label for="Outlet_Size">Outlet Size:</label>
+            <select id="Outlet_Size" name="Outlet_Size" required>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Small">Small</option>
+            </select>
+
+            <label for="Outlet_Type">Outlet Type:</label>
+            <select id="Outlet_Type" name="Outlet_Type" required>
+                <option value="Grocery Store">Grocery Store</option>
+                <option value="Supermarket Type1">Supermarket Type1</option>
+                <option value="Supermarket Type2">Supermarket Type2</option>
+                <option value="Supermarket Type3">Supermarket Type3</option>
+            </select>
+
+            <label for="Outlet_Establishment_Year">Outlet Establishment Year:</label>
+            <input type="number" id="Outlet_Establishment_Year" name="Outlet_Establishment_Year" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <h2>Sales Amount is between {{ prediction[0] }} and {{ prediction[1] }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
